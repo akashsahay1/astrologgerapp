@@ -1,0 +1,2 @@
+# astrologgerapp
+A flutter app
