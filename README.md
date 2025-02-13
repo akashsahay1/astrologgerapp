@@ -1,6 +1,6 @@
-# fapp
+# Astrologgers App
 
-A new Flutter project.
+A new Flutter based app for astrologgers.
 
 ## Getting Started
 
