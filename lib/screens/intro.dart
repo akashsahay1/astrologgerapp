@@ -79,7 +79,7 @@ class _IntroScreenState extends State<Intro> {
                   children: [
                     Image.asset(
                       page['image'],
-                      height: 300,
+                      height: 210,
                     ),
                     const SizedBox(height: 50),
                     Text(
@@ -90,7 +90,7 @@ class _IntroScreenState extends State<Intro> {
                         color: AppColors.textLight,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: Text(
@@ -108,7 +108,7 @@ class _IntroScreenState extends State<Intro> {
             },
           ),
           Positioned(
-            bottom: 100,
+            bottom: 150,
             left: 0,
             right: 0,
             child: Row(
@@ -117,8 +117,8 @@ class _IntroScreenState extends State<Intro> {
                 _pages.length,
                 (index) => Container(
                   margin: const EdgeInsets.symmetric(horizontal: 4),
-                  width: 12,
-                  height: 12,
+                  width: 10,
+                  height: 10,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _currentPage == index
@@ -130,7 +130,7 @@ class _IntroScreenState extends State<Intro> {
             ),
           ),
           Positioned(
-            bottom: 30,
+            bottom: 50,
             left: 0,
             right: 0,
             child: Padding(

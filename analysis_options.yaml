@@ -1,5 +1,13 @@
 include: package:flutter_lints/flutter.yaml
 
 linter:
-
   rules:
+    - prefer_single_quotes: true
+
+analyzer:
+  errors:
+    todo: ignore
+
+formatter:
+  indent: 4  
+  pageWidth: 580  
