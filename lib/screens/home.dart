@@ -118,7 +118,7 @@ class HomeState extends State<Home>{
                                     ),
                                     const SizedBox(height: 16.0),
                                     const Text(
-                                        'Find a best\nastrologer for you!',
+                                        'Find a best astrologer!',
                                         style: TextStyle(
                                             fontSize: 28.0,
                                             fontWeight: FontWeight.bold,
@@ -157,51 +157,6 @@ class HomeState extends State<Home>{
                                             ],
                                         ),
                                     ),
-                                    const SizedBox(height: 16.0),
-                                    Container(
-                                        padding: const EdgeInsets.all(20.0),
-                                        decoration: BoxDecoration(
-                                            color: const Color(0xFF2A1052),
-                                            borderRadius: BorderRadius.circular(16),
-                                        ),
-                                        child: Row(
-                                            children: [
-                                                Expanded(
-                                                    child: Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                        children: [
-                                                            Text(
-                                                                'Why Astrologist',
-                                                                style: TextStyle(
-                                                                    color: Colors.white,
-                                                                    fontSize: 20.0,
-                                                                    fontWeight: FontWeight.bold,
-                                                                ),
-                                                            ),
-                                                            const SizedBox(height: 8.0), 
-                                                            Padding(
-                                                                padding: EdgeInsets.only(right: 15.0),
-                                                                child: Text(
-                                                                    'Lorem ipsum dolor sit amet, con sectetur adipiscing',
-                                                                    style: TextStyle(
-                                                                        color: Colors.white,
-                                                                        fontSize: 14.0,
-                                                                    ),
-                                                                ),
-                                                            ),
-                                                            const SizedBox(height: 12.0),
-                                                        ],
-                                                    ),
-                                                ),
-                                                Image.asset(
-                                                    'assets/images/icon/appicon.png',
-                                                    width: 80.0,
-                                                    height: 80.0,
-                                                    fit: BoxFit.cover,
-                                                ),
-                                            ],
-                                        ),
-                                    ),
                                 ],
                             ),                            
                         ),
@@ -211,97 +166,127 @@ class HomeState extends State<Home>{
                                     minHeight: MediaQuery.of(context).size.height * 0.4,
                                 ),
                                 child: _astrologers.isEmpty && _isLoading
-                                    ? Center(child: CircularProgressIndicator())
-                                    : ListView.separated(
-                                        controller: _scrollController,
-                                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                                        itemCount: _astrologers.length + (_hasMoreData ? 1 : 0),
-                                        separatorBuilder: (context, index) => const SizedBox(height: 15.0),
-                                        itemBuilder: (context, index) {
-                                            if (index == _astrologers.length) {
-                                                return Center(
-                                                    child: Padding(
-                                                        padding: const EdgeInsets.all(16.0),
-                                                        child: CircularProgressIndicator(),
-                                                    ),
-                                                );
-                                            }
-
-                                            final astrologer = _astrologers[index];
-                                            return Container(
-                                                padding: const EdgeInsets.all(12),
-                                                decoration: BoxDecoration(
-                                                    color: const Color.fromARGB(255, 241, 255, 239),
-                                                    borderRadius: BorderRadius.circular(16),
-                                                    boxShadow: [
-                                                        BoxShadow(
-                                                            color: Colors.grey.withAlpha(1),
-                                                            blurRadius: 10,
-                                                            offset: const Offset(0, 5),
-                                                        ),
-                                                    ],
-                                                ),
-                                                child: Row(
-                                                    children: [
-                                                        Row(
-                                                            children: [
-                                                                CircleAvatar(
-                                                                    backgroundImage: NetworkImage('https://trueastrologgers.avenuxtechspire.com/${astrologer.avatar}'),
-                                                                    radius: 25,
-                                                                ),
-                                                                SizedBox(width: 10.0),
-                                                                Column(
-                                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                                    children: [
-                                                                        Text(
-                                                                            '${astrologer.firstName} ${astrologer.lastName}',
-                                                                            style: TextStyle(
-                                                                                fontSize: 18.0,
-                                                                                fontWeight: FontWeight.w600,
-                                                                                color: Colors.deepPurple
-                                                                            ),
-                                                                        ),
-                                                                        Text(astrologer.astroType)
-                                                                    ],
-                                                                )
-                                                            ],
-                                                        ),
-                                                        Spacer(),
-                                                        Row(
-                                                            children: [
-                                                                Container(
-                                                                    padding: const EdgeInsets.all(8),
-                                                                    decoration: BoxDecoration(
-                                                                        color: const Color(0xFF2A1052),
-                                                                        borderRadius: BorderRadius.circular(8),
-                                                                    ),
-                                                                    child: Icon(
-                                                                        Icons.phone,
-                                                                        color: Colors.white,
-                                                                        size: 16,
-                                                                    ),
-                                                                ),
-                                                                const SizedBox(width: 8),
-                                                                Container(
-                                                                    padding: const EdgeInsets.all(8),
-                                                                    decoration: BoxDecoration(
-                                                                        color: Colors.grey[300],
-                                                                        borderRadius: BorderRadius.circular(8),
-                                                                    ),
-                                                                    child: Icon(
-                                                                        Icons.chat_bubble_outline,
-                                                                        color: Colors.black,
-                                                                        size: 16,
-                                                                    ),
-                                                                ),
-                                                            ],
-                                                        ),
-                                                    ],
+                                ? Center(child: CircularProgressIndicator())
+                                : ListView.separated(
+                                    controller: _scrollController,
+                                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                    itemCount: _astrologers.length + (_hasMoreData ? 1 : 0),
+                                    separatorBuilder: (context, index) => const SizedBox(height: 15.0),
+                                    itemBuilder: (context, index) {
+                                        if (index == _astrologers.length) {
+                                            return Center(
+                                                child: Padding(
+                                                    padding: const EdgeInsets.all(16.0),
+                                                    child: CircularProgressIndicator(),
                                                 ),
                                             );
-                                        },
-                                    ),
+                                        }
+
+                                        final astrologer = _astrologers[index];
+                                        //print(astrologer);
+                                        return Container(
+                                            padding: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                                color: const Color.fromARGB(255, 241, 255, 239),
+                                                borderRadius: BorderRadius.circular(16),
+                                                boxShadow: [
+                                                    BoxShadow(
+                                                        color: Colors.grey.withAlpha(1),
+                                                        blurRadius: 10,
+                                                        offset: const Offset(0, 5),
+                                                    ),
+                                                ],
+                                            ),
+                                            child: Row(
+                                                children: [
+                                                    Row(
+                                                        children: [
+                                                            Container(
+                                                                padding: EdgeInsets.all(10.0),
+                                                                width: 60.0,
+                                                                height: 60.0,                                                                
+                                                                decoration: BoxDecoration(
+                                                                    color: Colors.amber,
+                                                                    borderRadius: BorderRadius.circular(5.0),
+                                                                ),
+                                                                child: Image.network(
+                                                                    'https://trueastrologgers.avenuxtechspire.com/${astrologer.avatar}', 
+                                                                    width: 50.0,
+                                                                    height: 50.0,
+                                                                    fit: BoxFit.cover,
+                                                                    
+
+                                                                ),
+                                                            ),
+                                                            SizedBox(width: 10.0),
+                                                            Column(
+                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                children: [
+                                                                    Text(
+                                                                        '${astrologer.firstName} ${astrologer.lastName}',
+                                                                        style: TextStyle(
+                                                                            fontSize: 18.0,
+                                                                            fontWeight: FontWeight.w600,
+                                                                            color: Colors.deepPurple
+                                                                        ),
+                                                                    ),
+                                                                    Text(astrologer.astroType)
+                                                                ],
+                                                            )
+                                                        ],
+                                                    ),
+                                                    Spacer(),
+                                                    Row(
+                                                        children: [
+                                                            Column(
+                                                                children: [
+                                                                    Row(
+                                                                        children: [
+                                                                            Text("₹27 / min", style: TextStyle(color: Colors.black),)
+                                                                        ],
+                                                                    ), 
+                                                                    const SizedBox(height: 20),
+                                                                    Row(
+                                                                        children: [
+                                                                            Container(
+                                                                                padding: const EdgeInsets.all(8),
+                                                                                decoration: BoxDecoration(
+                                                                                    color: const Color(0xFF2A1052),
+                                                                                    borderRadius: BorderRadius.circular(8),
+                                                                                ),
+                                                                                child: Icon(
+                                                                                    Icons.phone,
+                                                                                    color: Colors.white,
+                                                                                    size: 16,
+                                                                                ),
+                                                                            ),
+                                                                            const SizedBox(width: 8),
+                                                                            Container(
+                                                                                padding: const EdgeInsets.all(8),
+                                                                                decoration: BoxDecoration(
+                                                                                    color: Colors.grey[300],
+                                                                                    borderRadius: BorderRadius.circular(8),
+                                                                                ),
+                                                                                child: Icon(
+                                                                                    Icons.chat_bubble_outline,
+                                                                                    color: Colors.black,
+                                                                                    size: 16,
+                                                                                ),
+                                                                            ),
+                                                                        ],
+                                                                    )
+                                                                ],
+                                                            )
+                                                                                                                       
+                                                            
+                                                        ],
+                                                    ),
+                                                ],
+                                            ),
+                                        );
+                                    },
+                                ),
                             ),
                         ),                        
                     ]
